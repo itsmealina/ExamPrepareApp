@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат темы</title>
+    <link rel="stylesheet" th:href="@{/css/oge.css}">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <a th:href="@{/home}" class="nav-logo">Code 9.11</a>
+        <nav class="nav-links">
+            <a th:href="@{/home}" class="nav-link" th:classappend="${currentUri == '/home' ? ' active' : ''}">🏠 Главная</a>
+            <a th:href="@{/profile}" class="nav-link" th:classappend="${currentUri == '/profile' ? ' active' : ''}">👤 Профиль</a>
+            <a th:href="@{/logout}" class="nav-link logout">🚪 Выйти</a>
+        </nav>
+    </div>
+</header>
+
+
+<div class="result-container">
+    <h1 class="hero-title">Тема завершена!</h1>
+    <h2 class="theme-name" th:text="${theme.name()}"></h2>
+
+    <div class="score">
+        <span class="correct" th:text="${correct}"></span> / <span th:text="${total}"></span>
+    </div>
+
+    <div class="feedback" th:classappend="${percentage >= 80 ? ' excellent' : (percentage >= 60 ? ' good' : ' bad')}">
+        <span th:if="${percentage >= 80}">Отлично! Вы набрали <strong th:text="${percentage + '%'}"></strong></span>
+        <span th:if="${percentage >= 60 and percentage < 80}">Хорошо, но можно лучше!</span>
+        <span th:if="${percentage < 60}">Попробуйте ещё раз!</span>
+    </div>
+
+    <div class="result-actions">
+        <a th:href="@{/oge}" class="cta-button">Выбрать другую тему</a>
+        <a th:href="@{/home}" class="cta-button secondary">На главную</a>
+        <a th:href="@{/profile}" class="cta-button secondary">Профиль</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- src/main/resources/templates/oge/themes.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ОГЭ — Выбор темы</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/oge.css}">
+</head>
+<body class="gradient-bg">
+
+<!-- ==== НАВИГАЦИЯ ==== -->
+<nav class="oge-nav">
+    <div class="nav-container">
+        <a href="@{/home}" class="nav-logo">Code 9.11</a>
+        <div class="nav-links">
+            <a th:href="@{/home}" class="nav-link"> 🏠Главная</a>
+            <a th:href="@{/profile}" class="nav-link"> 👤Профиль</a>
+            <a th:href="@{/logout}" class="nav-link logout"> 🚪Выйти</a>
+        </div>
+    </div>
+</nav>
+
+<div class="oge-container oge-themes">
+    <h1 class="hero-title">ОГЭ — Выберите тему</h1>
+
+    <div class="cards">
+        <a th:each="t : ${themes}"
+           th:href="@{/oge/theme/{id}(id=${t.id})}"
+           class="card feature-card">
+            <h3 th:text="${t.name}">Тема</h3>
+            <p>5–7 заданий</p>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

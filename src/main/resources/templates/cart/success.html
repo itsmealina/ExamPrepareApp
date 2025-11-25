@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказ оформлен</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: nav}"></header>
+
+<div style="max-width:800px; margin:40px auto; background:white; padding:30px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.08);">
+    <h2>Спасибо! Ваш заказ оформлен.</h2>
+    <p>Номер заказа: <strong th:text="${orderId}"></strong></p>
+    <p>Проверить заказы можно в вашем профиле (в развитии).</p>
+    <a th:href="@{/practicum}">Вернуться к каталогу</a>
+</div>
+</body>
+</html>

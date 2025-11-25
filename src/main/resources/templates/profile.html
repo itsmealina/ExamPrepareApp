@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль — ExamPrepareApp</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="gradient-bg">
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="/home" class="nav-logo">📚 Code 9.11</a>
+        <div class="nav-links">
+            <a href="/home" class="nav-link">🏠 Главная</a>
+            <a href="/profile" class="nav-link active">👤 Профиль</a>
+            <a href="/logout" class="nav-link logout">🚪 Выйти</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Профиль пользователя</h1>
+    <p style="text-align: center; color: #666; margin-bottom: 30px;">Заполните информацию о себе</p>
+
+    <form class="profile-form">
+        <div class="form-group">
+            <label for="fullName">ФИО:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Иванов Иван Иванович">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.ru">
+        </div>
+        <div class="form-group">
+            <label for="birthday">День рождения:</label>
+            <input type="date" id="birthday" name="birthday">
+        </div>
+        <button type="submit" class="save-btn">Сохранить профиль</button>
+    </form>
+</div>
+
+</body>
+</html>

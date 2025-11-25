@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"><title>Темы</title><link rel="stylesheet" th:href="@{/css/admin.css}"></head>
+<body>
+<header><a th:href="@{/admin}">← Назад</a></header>
+<main class="container">
+    <h1>Темы</h1>
+    <form th:action="@{/admin/themes/create}" method="post">
+        <input name="name" placeholder="Название темы" required>
+        <button type="submit">Создать</button>
+    </form>
+
+    <ul>
+        <li th:each="t : ${themes}">
+            <span th:text="${t.name}">Тема</span>
+            <form th:action="@{/admin/themes/delete/{id}(id=${t.id})}" method="post" style="display:inline">
+                <button type="submit">Удалить</button>
+            </form>
+            <a th:href="@{/admin/tasks/{id}(id=${t.id})}">Задания</a>
+        </li>
+    </ul>
+</main>
+</body>
+</html>

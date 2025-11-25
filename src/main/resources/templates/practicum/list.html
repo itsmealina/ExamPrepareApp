@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практикум</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<h1 class="center">Практикум — выбирай тему</h1>
+
+<div class="cards" style="max-width:900px; margin:0 auto;">
+
+    <div class="card feature-card"
+         th:each="t : ${themes}"
+         th:onclick="'location.href=\'/practicum/' + ${t.id} + '\';'"
+         th:classappend="${t.paid} ? ' paid-card'">
+
+        <h3 th:text="${t.name}"></h3>
+        <p th:text="${t.description}"></p>
+
+        <div class="card-badge" th:if="${t.paid}">Платно 🔒</div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<body>
+<nav>
+    <ul>
+        <!-- Ссылка для всех авторизованных -->
+        <li sec:authorize="isAuthenticated()">
+            <a th:href="@{/profile}">Профиль</a>
+        </li>
+
+        <!-- Ссылка только для админа -->
+        <li sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/admin/dashboard}">Админка</a>
+        </li>
+
+        <!-- Ссылка только для продавца -->
+        <li sec:authorize="hasRole('SELLER')">
+            <a th:href="@{/seller/dashboard}">Кабинет продавца</a>
+        </li>
+
+        <!-- Выход -->
+        <li sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit">Выйти</button>
+            </form>
+        </li>
+
+        <!-- Вход/Регистрация для гостей -->
+        <li sec:authorize="isAnonymous()">
+            <a th:href="@{/login}">Вход</a>
+        </li>
+        <li sec:authorize="isAnonymous()">
+            <a th:href="@{/register}">Регистрация</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

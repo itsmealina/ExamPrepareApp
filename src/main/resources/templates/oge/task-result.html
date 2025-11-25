@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат задания</title>
+    <link rel="stylesheet" th:href="@{/css/oge.css}">
+</head>
+<body class="gradient-bg">
+
+
+<header class="navbar">
+    <div class="nav-container">
+        <a th:href="@{/home}" class="nav-logo">Code 9.11</a>
+        <nav class="nav-links">
+            <a th:href="@{/home}" class="nav-link" th:classappend="${currentUri == '/home' ? ' active' : ''}">Главная</a>
+            <a th:href="@{/profile}" class="nav-link" th:classappend="${currentUri == '/profile' ? ' active' : ''}">Профиль</a>
+            <a th:href="@{/logout}" class="nav-link logout">Выйти</a>
+        </nav>
+    </div>
+</header>
+
+<div class="task-result-container">
+    <h2 th:text="${correct ? 'Верно!' : 'Неверно'}" th:class="${correct ? 'success' : 'error'}"></h2>
+
+    <div class="question-block">
+        <p class="question" th:text="${task.question()}"></p>
+        <p class="user-answer">Ваш ответ: <strong th:text="${userAnswer}"></strong></p>
+        <p class="correct-answer" th:if="${!correct}">Правильный: <strong th:text="${task.correctAnswer()}"></strong></p>
+    </div>
+
+    <div class="task-actions">
+        <a th:if="${nextTask != null}" th:href="@{/oge/task/{id}(id=${nextTask})}" class="cta-button">Следующее</a>
+        <a th:if="${nextTask == null}" th:href="@{/oge/result}" class="cta-button">Завершить тему</a>
+        <a th:href="@{/home}" class="cta-button secondary">Главная</a>
+        <a th:href="@{/profile}" class="cta-button secondary">Профиль</a>
+    </div>
+</div>
+
+</body>
+</html>

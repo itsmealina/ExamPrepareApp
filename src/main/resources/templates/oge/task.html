@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ОГЭ — Задание</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/oge.css}">
+</head>
+<body class="gradient-bg">
+
+<!-- ==== НАВИГАЦИЯ ==== -->
+<header class="navbar">
+    <div class="nav-container">
+        <a th:href="@{/home}" class="nav-logo">Code 9.11</a>
+        <nav class="nav-links">
+            <a th:href="@{/home}" class="nav-link" th:classappend="${currentUri == '/home' ? ' active' : ''}"> 🏠Главная</a>
+            <a th:href="@{/profile}" class="nav-link" th:classappend="${currentUri == '/profile' ? ' active' : ''}"> 👤Профиль</a>
+            <a th:href="@{/logout}" class="nav-link logout">🚪Выйти</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Прогресс-бар -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" th:style="'width:' + ${currentProgress} + '%'"></div>
+        </div>
+        <div class="progress-text">
+            Задание <span th:text="${currentTask}"></span> из <span th:text="${totalTasks}"></span>
+        </div>
+    </div>
+
+    <!-- Таймер -->
+    <div class="timer" th:text="'00:' + ${remainingTime}"></div>
+
+    <h2>Задание <span th:text="${task.id()}"></span></h2>
+    <p class="question" th:text="${task.question()}"></p>
+
+    <form th:action="@{/oge/task/{id}(id=${task.id()})}" method="post">
+        <input type="text" name="answer" placeholder="Ваш ответ" required autofocus>
+        <button type="submit" class="cta-button">Проверить</button>
+    </form>
+
+    <p th:if="${task.hint()}" class="hint">Подсказка: <span th:text="${task.hint()}"></span></p>
+</div>
+
+<script th:src="@{/js/oge-timer.js}"></script>
+</body>
+</html>

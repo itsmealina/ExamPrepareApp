@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header th:replace="fragments/nav :: nav"></header>
+
+<div class="cart-container">
+    <h2>🛒 Корзина</h2>
+
+    <!-- Пустая корзина -->
+    <div th:if="${#lists.isEmpty(items)}">
+        Корзина пуста.<br>
+        <a th:href="@{/practicum}">Перейти к каталогу</a>
+    </div>
+
+    <!-- Содержимое корзины -->
+    <div th:if="${not #lists.isEmpty(items)}">
+        <div th:each="item : ${items}" class="cart-item">
+            <div>
+                <strong th:text="${themes.get(item.id).name}"></strong>
+                <p>Цена: <span th:text="${item.price}"></span> ₽ × <span th:text="${item.quantity}"></span></p>
+            </div>
+
+            <form th:action="@{'/cart/remove/' + ${item.id}}" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <button type="submit" class="btn remove-btn">Удалить</button>
+            </form>
+        </div>
+
+        <div class="total">
+            Итого: <span th:text="${total}"></span> ₽
+        </div>
+
+        <form th:action="@{/cart/checkout}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit" class="btn">📦 Сформировать заказ</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

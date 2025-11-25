@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${course.name}">Курс</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #f6f0ff, #fff4e6);
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            padding: 30px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .task-block {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(167, 116, 255, 0.15);
+        }
+
+        .task-block h3 {
+            margin: 0;
+            color: #444;
+        }
+
+        .task-block p {
+            color: #555;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 th:text="${course.name}">Название курса</h1>
+
+    <p th:text="${course.description}" style="text-align:center; color:#666;"></p>
+
+    <!-- Если курс платный -->
+    <div th:if="${course.paid}">
+        <div style="
+                background:#ffe5d1;
+                padding:15px;
+                border-radius:12px;
+                margin:20px 0;
+                text-align:center;
+                font-weight:600;">
+            🔒 Этот курс является платным.
+            <br>Чтобы получить доступ — купите курс в аккаунте.
+        </div>
+    </div>
+
+    <!-- Задания курса -->
+    <div th:each="task : ${tasks}">
+        <div class="task-block">
+            <h3 th:text="${task.title}">Заголовок задания</h3>
+            <p th:text="${task.text}">Текст задания</p>
+
+            <form th:action="@{'/practicum/' + ${course.id} + '/task/' + ${task.id}}" method="post">
+                <input type="text" name="answer" placeholder="Ваш ответ"
+                       style="padding:10px; width:70%; border-radius:10px; border:2px solid #c8a2ff;">
+                <button type="submit"
+                        style="padding:10px 20px; background:#a774ff; color:white; border:none; border-radius:10px; cursor:pointer;">
+                    Проверить
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная — Code9.11App</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="gradient-bg">
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="/home" class="nav-logo">📚 Code 9.11</a>
+        <div class="nav-links">
+            <a href="/home" class="nav-link active">🏠 Главная</a>
+            <a href="/profile" class="nav-link">👤 Профиль</a>
+            <a href="/logout" class="nav-link logout">🚪 Выйти</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <header class="hero-section">
+        <h1 class="hero-title">Подготовка к <span class="highlight">ОГЭ и ЕГЭ</span> по информатике</h1>
+        <p class="hero-subtitle">Интерактивная платформа для эффективной подготовки к экзаменам</p>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">заданий</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">тем</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">успеваемость</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <h2>Выбери направление подготовки</h2>
+        <div class="cards">
+            <div class="card feature-card"
+                 th:attr="onclick=|location.href='@{/oge}'|">
+            <div class="card-icon">🎯</div>
+                <h3>ОГЭ</h3>
+                <p>Полный курс теории и практических заданий для 9 класса</p>
+                <div class="card-badge">Для начинающих</div>
+            </div>
+            <div class="card feature-card">
+                <div class="card-icon">🚀</div>
+                <h3>ЕГЭ</h3>
+                <p>Углубленная подготовка к единому государственному экзамену</p>
+                <div class="card-badge">Для продвинутых</div>
+            </div>
+            <div class="card feature-card" onclick="location.href='/practicum'">
+            <div class="card-icon">💻</div>
+                <h3>Практикум</h3>
+                <p>Python, КуМир, Excel - от основ до продвинутого уровня</p>
+                <div class="card-badge">Популярно</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Начни обучение сегодня!</h2>
+        <p>Присоединяйся к тысячам студентов, которые уже готовятся с нами</p>
+        <button class="cta-button">Начать бесплатно</button>
+    </section>
+</div>
+</body>
+</html>

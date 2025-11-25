@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f6f0ff, #fff4e6);
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow: hidden; /* блокируем прокрутку */
+        }
+        .auth-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 380px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(167, 116, 255, 0.2);
+            text-align: center;
+            z-index: 1000;
+        }
+
+
+        body.modal-open { overflow: hidden; }
+
+        .auth-modal h2 { margin-bottom: 20px; color: #333; font-size: 1.8rem; }
+        .auth-modal input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #c8a2ff; border-radius: 10px; font-size: 16px; }
+        .auth-modal button { width: 100%; background: linear-gradient(135deg, #a774ff, #ffb366); color: white; border: none; padding: 14px; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.3s; }
+        .auth-modal button:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(167, 116, 255, 0.3); }
+        .auth-modal p { margin-top: 20px; font-size: 14px; color: #666; }
+        .auth-modal a { color: #a774ff; text-decoration: none; font-weight: 600; }
+        .auth-modal a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body class="gradient-bg modal-open">
+
+<div class="overlay"></div>
+
+<div class="auth-modal">
+    <h2>Регистрация</h2>
+    <form action="/register" method="post">
+        <input type="text" name="login" placeholder="Придумайте логин" required>
+        <input type="password" name="password" placeholder="Придумайте пароль" required>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+    <p>Уже есть аккаунт? <a href="/login">Войти</a></p>
+</div>
+
+</body>
+</html>

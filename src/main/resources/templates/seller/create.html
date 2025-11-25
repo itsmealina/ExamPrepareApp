@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать карточку</title>
+    <link rel="stylesheet" th:href="@{/css/oge.css}">
+</head>
+<body class="gradient-bg">
+
+<header th:replace="fragments/nav :: nav (currentUri='/seller')"></header>
+
+<div class="oge-container">
+    <h1 class="hero-title">Создать карточку</h1>
+
+    <form th:action="@{/seller/create}" method="post" th:object="${task}">
+        <div class="form-group">
+            <label>Заголовок</label>
+            <input type="text" th:field="*{title}" required />
+        </div>
+        <div class="form-group">
+            <label>Описание</label>
+            <textarea th:field="*{description}" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="cta-button">Создать</button>
+        <a th:href="@{/seller}" class="cta-button secondary">Отмена</a>
+    </form>
+</div>
+</body>
+</html>

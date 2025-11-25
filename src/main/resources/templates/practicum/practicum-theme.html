@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${theme.name}">Тема</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: nav}"></header>
+
+<h1 th:text="${theme.name}" class="center"></h1>
+<p th:text="${theme.description}"></p>
+
+<div class="cards">
+    <div class="card feature-card" th:each="task : ${tasks}">
+        <h3 th:text="'Задание ' + ${task.id}"></h3>
+        <p th:text="${task.question}"></p>
+        <form th:action="@{/practicum/task/{id}(id=${task.id})}" method="post">
+            <input type="text" name="answer" placeholder="Ваш ответ" required>
+            <button type="submit" class="cta-button">Проверить</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

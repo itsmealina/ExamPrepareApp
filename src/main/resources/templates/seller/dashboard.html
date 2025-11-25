@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Кабинет продавца</title>
+    <link rel="stylesheet" th:href="@{/css/oge.css}">
+</head>
+<body class="gradient-bg">
+
+<header class="navbar">
+    <div class="nav-container">
+        <a th:href="@{/seller}" class="nav-logo">Кабинет продавца</a>
+        <nav class="nav-links">
+            <a th:href="@{/seller}" class="nav-link">🏠 Главная</a>
+            <a th:href="@{/seller/create}" class="nav-link">➕ Создать карточку</a>
+            <a th:href="@{/logout}" class="nav-link logout">🚪 Выйти</a>
+        </nav>
+    </div>
+</header>
+
+<div class="admin-container">
+    <h1 class="hero-title">Ваши карточки</h1>
+
+    <div class="cards">
+        <div class="card" th:each="t : ${tasks}">
+            <h3 th:text="${t.title}">Название карточки</h3>
+            <p th:text="${t.description}">Описание карточки</p>
+            <a th:href="@{/seller/edit/{id}(id=${t.id})}" class="cta-button">Редактировать</a>
+            <form th:action="@{/seller/delete/{id}(id=${t.id})}" method="post" style="display:inline;">
+                <button type="submit" class="cta-button secondary">Удалить</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

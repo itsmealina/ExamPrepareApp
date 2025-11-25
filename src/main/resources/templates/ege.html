@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ЕГЭ</title>
+</head>
+<body>
+<h1>Тест ЕГЭ</h1>
+<form method="post" action="/ege/check">
+    <p>1. Кто доказал теорему, названную в его честь? <input type="text" name="answer1" required></p>
+    <p>2. В каком году была Отечественная война? <input type="text" name="answer2" required></p>
+    <p>3. Приблизительное значение числа π: <input type="text" name="answer3" required></p>
+    <button type="submit">Завершить тест</button>
+</form>
+</body>
+</html>
