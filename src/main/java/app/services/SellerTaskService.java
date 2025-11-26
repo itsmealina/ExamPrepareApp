@@ -1,7 +1,6 @@
 package app.services;
 
 import app.entities.SellerTask;
-import app.entities.SellerTheme;
 import app.repositories.SellerTaskRepository;
 import org.springframework.stereotype.Service;
 
