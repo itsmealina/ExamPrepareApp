@@ -1,7 +1,6 @@
 package app.controllers;
 
 import app.entities.PracticumTheme;
-import app.entities.Task;
 import app.services.AdminService;
 import app.services.UserService;
 import org.springframework.stereotype.Controller;

@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<header th:replace="fragments/nav :: nav"></header>
+<header th:replace="~{fragments/nav :: nav}"></header>  <!-- Исправленный синтаксис -->
 
 <div class="cart-container">
     <h2>🛒 Корзина</h2>
@@ -26,8 +26,7 @@
                 <p>Цена: <span th:text="${item.price}"></span> ₽ × <span th:text="${item.quantity}"></span></p>
             </div>
 
-            <form th:action="@{'/cart/remove/' + ${item.id}}" method="post">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <form th:action="@{/cart/remove/{id}(id=${item.id})}" method="post">
                 <button type="submit" class="btn remove-btn">Удалить</button>
             </form>
         </div>
@@ -37,7 +36,6 @@
         </div>
 
         <form th:action="@{/cart/checkout}" method="post">
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <button type="submit" class="btn">📦 Сформировать заказ</button>
         </form>
     </div>
