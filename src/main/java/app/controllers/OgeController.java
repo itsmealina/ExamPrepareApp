@@ -2,7 +2,6 @@ package app.controllers;
 
 import app.services.OgeService;
 import app.services.OgeService.Task;
-import app.services.OgeService.Theme;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

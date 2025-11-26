@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/cart/add/{id}")
+@RequestMapping("/cart")
 public class CartController {
 
     private final CartService cartService;
